@@ -1,3 +1,4 @@
+import { Link } from 'gatsby'
 import React from 'react'
 import {
   Box,
@@ -30,6 +31,7 @@ const IndexPage = () => {
                 style={{ backgroundSize: 'cover' }}
               />
             </Box>
+            <Link to="/ch0nk/fine_boi">Buy dis produz</Link>
           </Card>
           <Card>
             <Heading>He Ch0nk</Heading>
