@@ -1,10 +1,10 @@
-const products = require('./data/products')
+const { products } = require('./data/products')
 
 const slugify = (product) => {
   return product.sku
 }
 
-export const createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
   const typeDefs = `
@@ -23,7 +23,7 @@ export const createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs)
 }
 
-export const sourceNodes = async ({
+exports.sourceNodes = async ({
   actions: { createNode },
   createContentDigest,
   createNodeId
@@ -39,5 +39,30 @@ export const sourceNodes = async ({
       }
     }
     createNode(node)
+  })
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allProduct {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  result.data.allProduct.edges.forEach(({ node }) => {
+    createPage({
+      path: `ch0nk/${node.slug}`,
+      component: require.resolve('./src/templates/product.js'),
+      context: {
+        slug: node.slug
+      }
+    })
   })
 }

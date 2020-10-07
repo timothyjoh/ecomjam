@@ -1,10 +1,10 @@
-import { loadStripe } from '@stripe/stripe-js'
-import React from 'react'
-import { CartProvider } from 'use-shopping-cart'
+const { loadStripe } = require('@stripe/stripe-js')
+const React = require('react')
+const { CartProvider } = require('use-shopping-cart')
 
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_API_PUBLIC)
 
-export const wrapRootElement = ({ element }) => {
+exports.wrapRootElement = ({ element }) => {
   return (
     <CartProvider
       stripe={stripePromise}

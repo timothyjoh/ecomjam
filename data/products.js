@@ -1,4 +1,4 @@
-export default [
+exports.products = [
   {
     name: 'A Fine Boi',
     sku: 'fine_boi',
