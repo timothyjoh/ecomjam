@@ -1,8 +1,14 @@
 export default {
   colors: {
-    text: '#fff',
-    background: '#000',
-    primary: '#ff0'
+    text: '#222',
+    background: '#eee',
+    primary: '#368',
+    modes: {
+      dark: {
+        text: '#fff',
+        background: '#000'
+      }
+    }
   },
   fonts: {
     body: 'Public Sans',
@@ -24,9 +30,18 @@ export default {
   },
   heading: {
     fontFamily: 'Muli',
-    textTransform: 'uppercase',
     color: 'primary',
     py: 30,
     my: 30
+  },
+  text: {
+    default: {
+      color: 'text',
+      mb: 5
+    },
+    caps: {
+      textTransform: 'uppercase',
+      letterSpacing: '0.2em'
+    }
   }
 }
